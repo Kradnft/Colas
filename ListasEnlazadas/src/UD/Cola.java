@@ -5,6 +5,9 @@
  */
 package UD;
 
+import java.awt.List;
+import java.util.ArrayList;
+
 /**
  *
  * @author KevinB
@@ -12,7 +15,8 @@ package UD;
 public class Cola {
 
     protected Node Cabecera;
-
+    ArrayList<String> ClientesArr;
+    
     public Cola() {
         Cabecera = null;
     }
@@ -62,10 +66,12 @@ public class Cola {
 
     public String imprimir() {
         String clientes = "";
+        ClientesArr = new ArrayList();
         if (!isEmpty()) {
             Node tmp = Cabecera;
             while (tmp != null) {
-                clientes = clientes + "CLIENTE: " + tmp.nombre + " - N° RECIBOS: " + tmp.getInfo() + "\n";
+                clientes = clientes + "CLIENTE: " + tmp.nombre + " - N° RECIBOS: " + tmp.getInfo() + "." + "\n";
+                ClientesArr.add("CLIENTE: " + tmp.nombre + " - N° RECIBOS: " + tmp.getInfo() + ".");
                 tmp = tmp.getNext();
             }
         }
