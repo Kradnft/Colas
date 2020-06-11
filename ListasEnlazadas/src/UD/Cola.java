@@ -9,72 +9,75 @@ package UD;
  *
  * @author KevinB
  */
-
 public class Cola {
-	 
-	  protected Node Cabecera;
 
-	  public Cola() {
-	    Cabecera = null;
-	  }
+    protected Node Cabecera;
 
-	  public void insert(int nr, String nom) {
+    public Cola() {
+        Cabecera = null;
+    }
 
-	    Node tmp = new Node(nr, nom);
+    public void insert(int nr, String nom) {
 
-	    tmp.setNext(Cabecera);
-	    
-	    Cabecera = tmp;
-	  }
+        Node tmp = new Node(nr, nom);
 
-	  public void extraer(int x) {
-            while (x>0){
-                int l= longitud();
-                if (l>1){
-                Node aux=Cabecera;
-                while(aux.next.next!=null){
-                    aux=aux.next;
+        tmp.setNext(Cabecera);
+
+        Cabecera = tmp;
+    }
+
+    public void extraer(int x) {
+        while (x > 0) {
+            int l = longitud();
+            if (l > 1) {
+                Node aux = Cabecera;
+                while (aux.next.next != null) {
+                    aux = aux.next;
                 }
-                if (aux.next.info>5){
-                    this.insert(aux.next.info-5, aux.next.nombre);
+                if (aux.next.info > 5) {
+                    this.insert(aux.next.info - 5, aux.next.nombre);
                 }
                 aux.setNext(null);
-                }
-                else{
-                Cabecera=null;
-                }
-                x--;
+            } else {
+                Cabecera = null;
             }
-            
-	  }
-               
-         //Metodo para obtener longitud (6 lineas de código)
-          /*Generamos un contador y un nodo temporal que ira recorriendo la cola
+            x--;
+        }
+
+    }
+
+    //Metodo para obtener longitud (6 lineas de código)
+    /*Generamos un contador y un nodo temporal que ira recorriendo la cola
           hasta encontrar el final, mientra va recorriendo va sumando al contador
-          */
-	  public int longitud(){
-            int cont = 0;
+     */
+    public int longitud() {
+        int cont = 0;
+        Node tmp = Cabecera;
+        while (tmp != null) {
+            cont = cont + 1;
+            tmp = tmp.getNext();
+        }
+        return cont;
+    }
+
+    public String imprimir() {
+        String clientes = "";
+        if (!isEmpty()) {
             Node tmp = Cabecera;
-            while (tmp!=null){
-              cont=cont+1;
-              tmp = tmp.getNext();}
-            return cont;
+            while (tmp != null) {
+                clientes = clientes + "CLIENTE: " + tmp.nombre + " - N° RECIBOS: " + tmp.getInfo() + "\n";
+                tmp = tmp.getNext();
             }
+        }
+        
+        return clientes;
+    }
 
-	  public void imprimir() {
-	    if (!isEmpty()) {
-	      Node tmp = Cabecera;
-	    while (tmp != null) {
-                    System.out.println("Cliente:"+ tmp.nombre +" Numero recibos: " + tmp.getInfo());
-	        tmp = tmp.getNext();
-	      }
-	    }
-	  }
-
-	  public boolean isEmpty() {
-	    if (Cabecera == null)
-	      return true;
-	    else
-	      return false;
-	  }
+    public boolean isEmpty() {
+        if (Cabecera == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

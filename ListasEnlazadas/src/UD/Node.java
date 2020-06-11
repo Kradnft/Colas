@@ -9,28 +9,31 @@ package UD;
  *
  * @author KevinB
  */
-
 public class Node {
-          public int info;
-          public String nombre;
-	  public Node next;
 
-	  public Node(int in, String nom) {
-	    info = in;
-	    next = null;
-            nombre = nom;
-	  }
+    public int info;
+    public String nombre;
+    public Node next;
 
-	  public void setInfo(int o) {
-	    info = o;
-	  }
-	  public void setNext(Node n) {
-	    next = n;
-	  }
-	  public Object getInfo() {
-	    return info;
-	  }
-	  public Node getNext() {
-	    return next;
-	  }
+    public Node(int in, String nom) {
+        info = in;
+        next = null;
+        nombre = nom;
+    }
+
+    public void setInfo(int o) {
+        info = o;
+    }
+
+    public void setNext(Node n) {
+        next = n;
+    }
+
+    public Object getInfo() {
+        return info;
+    }
+
+    public Node getNext() {
+        return next;
+    }
 }
